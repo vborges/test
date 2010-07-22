@@ -1,14 +1,14 @@
 default_run_options[:pty] = true
-set :user, "johlstei"
+set :user, "aybarra"
 #set :password, "raiders2008_Vero"
 #set :use_sudo, false
 set :application, "tutorial"
-set :deploy_to, "/home/johlstei/src/deployed/#{application}"
+set :deploy_to, "/usr2/aybarra/deployed/#{application}"
 
-#set :repository,  "https://vborges@github.com/vborges/tutorial.git"
+set :repository,  "https://vborges@github.com/vborges/test.git"
 ssh_options[:paranoid] = false
 set :scm, :git
-set :repository, "/home/johlstei/src/tutorial"
+#set :repository, "/home/johlstei/src/tutorial"
 #set :scm_username, "vborges"
 #set :scm_password, "raiders2008_Vero"
 set :branch, "master"
