@@ -1,22 +1,30 @@
+require 'mongrel_cluster/recipes'
+
 default_run_options[:pty] = true
 set :user, "aybarra"
-#set :password, "raiders2008_Vero"
-#set :use_sudo, false
 set :application, "tutorial"
+set :password, "aA187759!"
+set :use_sudo, false
+
+set :mongrel_clean, true
+
 set :deploy_to, "/usr2/aybarra/deployed/#{application}"
 
+set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 set :repository,  "https://vborges@github.com/vborges/test.git"
 ssh_options[:paranoid] = false
 set :scm, :git
+
 #set :repository, "/home/johlstei/src/tutorial"
-#set :scm_username, "vborges"
-#set :scm_password, "raiders2008_Vero"
+set :scm_username, "vborges"
+set :scm_password, "raiders2008_Vero"
+
 set :branch, "master"
 
-#ssh_options[:keys] = %w(/usr2/vborges/.ssh/id_rsa)
+ssh_options[:keys] = %w(/usr2/aybarra/.ssh/id_rsa)
 ssh_options[:verbose] = :debug
-#ssh_options[:forward_agent] = true
-#set :password, "raiders2008_Vero"
+ssh_options[:forward_agent] = true
+#set :password, "aA187759!"
 #set :deploy_via, :copy        # if you server does NOT have direct access to the repository (default)
 #set :git_shallow_clone, 1
 set :deploy_via, :remote_cache

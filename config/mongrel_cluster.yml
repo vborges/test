@@ -1,0 +1,8 @@
+---
+port: 8000
+servers: 1
+pid_file: tmp/pids/mongrel.pid
+log_file: log/mongrel.log
+#address: 127.0.0.1
+environment: production
+cwd: /usr2/aybarra/deployed/tutorial/current
