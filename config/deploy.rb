@@ -5,7 +5,7 @@ set :user, "aybarra"
 set :application, "tutorial"
 set :password, "aA187759!"
 set :use_sudo, false
-
+set :run_method, :run
 set :mongrel_clean, true
 
 set :deploy_to, "/usr2/aybarra/deployed/#{application}"
@@ -14,7 +14,7 @@ set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 set :repository,  "https://vborges@github.com/vborges/test.git"
 ssh_options[:paranoid] = false
 set :scm, :git
-
+set :port_number, "8000"
 #set :repository, "/home/johlstei/src/tutorial"
 set :scm_username, "vborges"
 set :scm_password, "raiders2008_Vero"
@@ -22,7 +22,7 @@ set :scm_password, "raiders2008_Vero"
 set :branch, "master"
 
 ssh_options[:keys] = %w(/usr2/aybarra/.ssh/id_rsa)
-ssh_options[:verbose] = :debug
+#ssh_options[:verbose] = :debug
 ssh_options[:forward_agent] = true
 #set :password, "aA187759!"
 #set :deploy_via, :copy        # if you server does NOT have direct access to the repository (default)
@@ -57,7 +57,7 @@ role :db,  "localhost", :primary => true # This is where Rails migrations will r
 #    end
 #  end
 #end
-#
+
 #namespace :thin do
 #  %w(start stop restart).each do |action|
 #  desc "#{action} the app's Thin Cluster"
@@ -66,3 +66,27 @@ role :db,  "localhost", :primary => true # This is where Rails migrations will r
 #    end
 #  end
 #end
+
+#namespace :deploy do
+
+ # task :start, :roles => :app do
+ #   run "cd #{deploy_to}/current; mongrel_rails start -e production -p #{port_number} -d"
+ # end
+ # task :stop, :roles => :app do
+ #   run "cd #{deploy_to}/current; mongrel_rails stop"
+ # end
+ # task :restart, :roles => :app do
+ #   run "cd #{deploy_to}/current; mongrel_rails stop; mongrel_rails start -e production -p #{port_number} -d"
+ #   run "echo \"WEBSITE HAS BEEN DEPLOYED\""
+ # end
+
+  #after "deploy:update_code", :link_production_db
+#end
+
+# database.yml task
+#desc "Link in the production database.yml"
+#task :link_production_db do
+#  run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
+#end
+
+
